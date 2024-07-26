@@ -1,5 +1,9 @@
 console.log("Hello World!");
 
+let computerInput = getComputerChoice();
+let humanInput = getHumanChoice();
+
+playRound(humanInput, computerInput);
 
 function getComputerChoice(){
     let choice; //create variable to store computer's choice
@@ -19,28 +23,38 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    console.log('Rock, Paper Scissors, SHOOT!'); //prompt user to enter a choice
+    //prompt user to enter a choice and save it in a variable
+    let choice = prompt('Rock, Paper, Scissors, SHOOT!');
+    return choice;
 }
+
 
 function playRound(humanChoice, computerChoice){
     let human = humanChoice.toUpperCase(); //ensure the human choice is case insensitive
     let computer = computerChoice.toUpperCase(); //do the same for computer choice
     switch(human){ //evaluate conditions based on the human input
-        case ROCK:
+        case 'ROCK':
             switch(computer){
-                case ROCK:
+                case 'ROCK':
                     //tie
+                    console.log('Tie!');
                     break;
-                case PAPER:
+                case 'PAPER':
                     //computer Wins! Paper beats Rock
+                    console.log('Computer Wins! Paper beats Rock.');
                     break;
-                case SCISSORs:
+                case 'SCISSORS':
+                    //human wins! Rock beats Scissors
+                    console.log('Human Wins! Rock beats Scissors')
                     break;
+                default: 
+                    //incorrect selection
+                    console.log(Incorrect)
             }
             break;
-        case PAPER:
+        case 'PAPER':
             break;
-        case SCISSORs:
+        case 'SCISSORS':
             break;
         
     }
