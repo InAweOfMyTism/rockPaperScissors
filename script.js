@@ -32,92 +32,103 @@ function getHumanChoice(){
 }
 
 
-function playRound(humanChoice, computerChoice){
-    let human = humanChoice.toUpperCase(); //ensure the human choice is case insensitive
-    let computer = computerChoice.toUpperCase(); //do the same for computer choice
-    switch(human){ //evaluate conditions based on the human input
-        case 'ROCK':
-            switch(computer){
-                case 'ROCK':
-                    //tie
-                    console.log('Tie!');
-                    break;
-                case 'PAPER':
-                    //computer Wins! Paper beats Rock
-                    console.log('Computer Wins! Paper beats Rock.');
-                    break;
-                case 'SCISSORS':
-                    //human wins! Rock beats Scissors
-                    console.log('Human Wins! Rock beats Scissors')
-                    break;
-                default: 
-                    //incorrect selection
-                    console.log('Incorrect selection');
-            }
-            break;
-        case 'PAPER':
-            switch(computer){
-                case 'ROCK':
-                    //tie
-                    console.log('Tie!');
-                    break;
-                case 'PAPER':
-                    //computer Wins! Paper beats Rock
-                    console.log('Computer Wins! Paper beats Rock.');
-                    break;
-                case 'SCISSORS':
-                    //human wins! Rock beats Scissors
-                    console.log('Human Wins! Rock beats Scissors')
-                    break;
-                default: 
-                    //incorrect selection
-                    console.log('Incorrect selection');
-            }
-            break;
-        case 'SCISSORS':
-            switch(computer){
-                case 'ROCK':
-                    //tie
-                    console.log('Tie!');
-                    break;
-                case 'PAPER':
-                    //computer Wins! Paper beats Rock
-                    console.log('Computer Wins! Paper beats Rock.');
-                    break;
-                case 'SCISSORS':
-                    //human wins! Rock beats Scissors
-                    console.log('Human Wins! Rock beats Scissors')
-                    break;
-                default: 
-                    //incorrect selection
-                    console.log('Incorrect selection');
-            }
-            break;
-        
+
+
+
+
+
+
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let roundsPlayed = 0;
+
+    while(roundsPlayed <= 5){
+        playRound();
+    }
+    displayWinner();
+
+    //declare play round functions
+    function playRound(humanChoice, computerChoice){
+        let human = humanChoice.toUpperCase(); //ensure the human choice is case insensitive
+        let computer = computerChoice.toUpperCase(); //do the same for computer choice
+        switch(human){ //evaluate conditions based on the human input
+            case 'GUN':
+                humanWinsRound(human, computer);
+                break;
+            case 'ROCK':
+                switch(computer){
+                    case 'ROCK':
+                        //tie. do not increment round
+                        tiedRound(human, computer);
+                        break;
+                    case 'PAPER':
+                        //computer Wins! Paper beats Rock
+                        computerWinsRound(human, computer);
+                        break;
+                    case 'SCISSORS':
+                        //human wins! Rock beats Scissors
+                        humanWinsRound(human, computer);
+                        break;
+                    default: 
+                        //incorrect selection
+                        console.log('Incorrect selection');
+                        incorrectSelection(human);
+                }
+                break;
+            case 'PAPER':
+                switch(computer){
+                    // loses to scissors
+                    // beats rock
+                }
+                break;
+            case 'SCISSORS':
+                switch(computer){
+                    // loses to rock
+                    //beats paper
+                }
+                break;
+            default:
+
+                break;
+            
+        }
+    }
+    //declare helper functions
+    function tiedRound(humanChoice, computerChoice){
+        //code to run if round is tied
+            //display message
+            console.log(`Tie between ${humanChoice} and ${computerChoice}`);
+            //DO NOT increment rounds played
+            //do not add to any scores
+    }
+    function humanWinsRound(humanChoice, computerChoice){
+        //code to run if human wins
+        console.log(`Human Wins! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+        roundsPlayed++;
+    
+    }
+    function computerWinsRound(humanChoice, computerChoice){
+        //code to run if computer wins
+            //display message
+        console.log(`Computer Wins! ${computerChoice} beats ${humanChoice}`);
+            //increment rounds played
+        roundsPlayed++;
+        computerScore++;
+            //increment score
+    }
+    function incorrectSelection(humanInput){
+        //code to run if human inputs something else
+            //if human entered r, ask if they meant rock
+            //repeat for P and S
+            //else prompt to reenter choice
+        if(humanInput.at(0) === 'R'){
+            prompt('Did you mean rock? y/n');
+        }
     }
 }
 
-function tiedRound(humanChoice, computerChoice){
-    //code to run if round is tied
-        //display message
-        //DO NOT increment rounds played
-        //do not add to any scores
-}
+function displayWinner(){
 
-function humanWinsRound(humanChoice, computerChoice){
-    //code to run if human wins
-    console.log(`Human Wins! ${humanChoice} beats ${computerChoice} `);
-    return ++humanScore;
-
-}
-
-function computerWinsRound(humanChoice, computerChoice){
-    //code to run if computer wins
-        //display message
-        //increment rounds played
-        //increment score
-}
-
-function incorrectSelection(){
-    //code to run if human inputs something else
 }
