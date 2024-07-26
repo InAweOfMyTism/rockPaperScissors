@@ -120,9 +120,16 @@ function playGame(){
         computerScore++;
             //increment score
     }
+
+    function displayWinner(){
+        //compare two scores to declare winner
+        if (humanScore > computerScore){
+            console.log('human wins!');
+        } else {
+            console.log('computer wins!');
+        }
+    }
     
 }
 
-function displayWinner(){
 
-}
