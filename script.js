@@ -1,5 +1,5 @@
 console.log("Hello World!");
-
+playGame();
 function getComputerChoice(){
     let choice; //create variable to store computer's choice
     let randNum = Math.floor(Math.random()*3); //generate a random integer between 0-2
@@ -55,20 +55,41 @@ function playGame(){
                         //human wins! Rock beats Scissors
                         humanWinsRound(human, computer);
                         break;
-                    default: 
-                        //incorrect selection
-                        console.log('Incorrect selection');
-                        incorrectSelection(human);
+                    default:
                 }
                 break;
             case 'PAPER':
                 switch(computer){
+                    case 'ROCK':
+                        //human wins! paper beats rock
+                        humanWinsRound(human, computer);
+                        break;
+                    case 'PAPER':
+                        //tie. do not increment round
+                        tiedRound(human, computer);
+                        break;
+                    case 'SCISSORS':
+                        //computer Wins! scissors beats paper
+                        computerWinsRound(human, computer);
+                        break;
                     // loses to scissors
                     // beats rock
                 }
                 break;
             case 'SCISSORS':
                 switch(computer){
+                    case 'ROCK':
+                        //computer wins! rock beats scissors
+                        computerWinsRound(human, computer);
+                        break;
+                    case 'PAPER':
+                        //human wins! scissors beats paper
+                        humanWinsRound(human, computer);
+                        break;
+                    case 'SCISSORS':
+                        //tie!
+                        tiedRound(human, computer);
+                        break;
                     // loses to rock
                     //beats paper
                 }
