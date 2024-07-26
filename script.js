@@ -1,5 +1,7 @@
 console.log("Hello World!");
 
+
+
 let computerInput = getComputerChoice();
 let humanInput = getHumanChoice();
 
@@ -49,14 +51,63 @@ function playRound(humanChoice, computerChoice){
                     break;
                 default: 
                     //incorrect selection
-                    console.log(Incorrect)
+                    console.log('Incorrect selection');
             }
             break;
         case 'PAPER':
+            switch(computer){
+                case 'ROCK':
+                    //tie
+                    console.log('Tie!');
+                    break;
+                case 'PAPER':
+                    //computer Wins! Paper beats Rock
+                    console.log('Computer Wins! Paper beats Rock.');
+                    break;
+                case 'SCISSORS':
+                    //human wins! Rock beats Scissors
+                    console.log('Human Wins! Rock beats Scissors')
+                    break;
+                default: 
+                    //incorrect selection
+                    console.log('Incorrect selection');
+            }
             break;
         case 'SCISSORS':
+            switch(computer){
+                case 'ROCK':
+                    //tie
+                    console.log('Tie!');
+                    break;
+                case 'PAPER':
+                    //computer Wins! Paper beats Rock
+                    console.log('Computer Wins! Paper beats Rock.');
+                    break;
+                case 'SCISSORS':
+                    //human wins! Rock beats Scissors
+                    console.log('Human Wins! Rock beats Scissors')
+                    break;
+                default: 
+                    //incorrect selection
+                    console.log('Incorrect selection');
+            }
             break;
         
     }
 }
 
+function tiedRound(humanChoice, computerChoice){
+    //code to run if round is tied
+}
+
+function humanWinsRound(humanChoice, computerChoice){
+    //code to run if human wins
+}
+
+function computerWinsRound(humanChoice, computerChoice){
+    //code to run if computer wins
+}
+
+function incorrectSelection(){
+    //code to run if human inputs something else
+}
