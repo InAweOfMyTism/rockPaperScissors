@@ -1,6 +1,7 @@
 console.log("Hello World!");
 
-
+let humanScore = 0;
+let computerScore = 0;
 
 let computerInput = getComputerChoice();
 let humanInput = getHumanChoice();
@@ -98,14 +99,23 @@ function playRound(humanChoice, computerChoice){
 
 function tiedRound(humanChoice, computerChoice){
     //code to run if round is tied
+        //display message
+        //DO NOT increment rounds played
+        //do not add to any scores
 }
 
 function humanWinsRound(humanChoice, computerChoice){
     //code to run if human wins
+    console.log(`Human Wins! ${humanChoice} beats ${computerChoice} `);
+    return ++humanScore;
+
 }
 
 function computerWinsRound(humanChoice, computerChoice){
     //code to run if computer wins
+        //display message
+        //increment rounds played
+        //increment score
 }
 
 function incorrectSelection(){
