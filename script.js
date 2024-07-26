@@ -1,13 +1,5 @@
 console.log("Hello World!");
 
-let humanScore = 0;
-let computerScore = 0;
-
-let computerInput = getComputerChoice();
-let humanInput = getHumanChoice();
-
-playRound(humanInput, computerInput);
-
 function getComputerChoice(){
     let choice; //create variable to store computer's choice
     let randNum = Math.floor(Math.random()*3); //generate a random integer between 0-2
@@ -31,13 +23,6 @@ function getHumanChoice(){
     return choice;
 }
 
-
-
-
-
-
-
-
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
@@ -49,9 +34,9 @@ function playGame(){
     displayWinner();
 
     //declare play round functions
-    function playRound(humanChoice, computerChoice){
-        let human = humanChoice.toUpperCase(); //ensure the human choice is case insensitive
-        let computer = computerChoice.toUpperCase(); //do the same for computer choice
+    function playRound(){
+        let human = getHumanChoice().toUpperCase(); //ensure the human choice is case insensitive
+        let computer = getComputerChoice().toUpperCase(); //do the same for computer choice
         switch(human){ //evaluate conditions based on the human input
             case 'GUN':
                 humanWinsRound(human, computer);
@@ -89,9 +74,26 @@ function playGame(){
                 }
                 break;
             default:
-
+                incorrectSelection(human);
                 break;
             
+        }
+        //declare typo fixer 
+        function incorrectSelection(humanInput){
+            //code to run if human inputs something else
+                //if human entered r, ask if they meant rock
+                //repeat for P and S
+                //else prompt to reenter choice
+            if(humanInput.at(0) === 'R'){
+                human = prompt('Did you mean rock?', 'ROCK');
+            } else if(humanInput.at(0) === 'P'){
+                human = prompt('Did you mean paper?', 'PAPER');
+            } else if(humanInput.at(0) === 'S'){
+                human = prompt('Did you mean scissors?', 'SCISSORS');
+            } else {
+                human = getHumanChoice().toUpperCase();
+            }
+
         }
     }
     //declare helper functions
@@ -118,15 +120,7 @@ function playGame(){
         computerScore++;
             //increment score
     }
-    function incorrectSelection(humanInput){
-        //code to run if human inputs something else
-            //if human entered r, ask if they meant rock
-            //repeat for P and S
-            //else prompt to reenter choice
-        if(humanInput.at(0) === 'R'){
-            prompt('Did you mean rock? y/n');
-        }
-    }
+    
 }
 
 function displayWinner(){
